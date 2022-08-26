@@ -85,7 +85,7 @@ func TestGenerateTrieFromItems(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got, err := GenerateTreeFromItems(tt.items)
+			got, err := GenerateTreeFromItems(tt.items, true)
 			if (err != nil) != tt.wantErr {
 				t.Errorf("GenerateTreeFromItems() error = %v, wantErr %v", err, tt.wantErr)
 				return
@@ -220,12 +220,12 @@ func TestMerkleProof(t *testing.T) {
 				padTo([]byte{60}, 32),
 			},
 			itemToProve: common.Hex2Bytes("beef3c198d933f7462412341b2cc6d0b12215af5adc803ad40dfe5f44a444e0f"),
-			wantErr: true,
+			wantErr:     true,
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got, err := GenerateTreeFromItems(tt.items)
+			got, err := GenerateTreeFromItems(tt.items, true)
 			if err != nil {
 				t.Error(err)
 				return

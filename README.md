@@ -8,7 +8,7 @@ import (
 	"fmt"
 	"math/big"
 
-	"github.com/0xKiwi/sol-merkle-tree-go"
+	solmerkle "github.com/suefay/sol-merkle-tree-go"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/crypto"
 )
@@ -50,7 +50,7 @@ nodes := make([][]byte, len(elements))
 	}
 
     // Create the tree. 
-	tree, err := solmerkle.GenerateTreeFromHashedItems(nodes)
+	tree, err := solmerkle.GenerateTreeFromHashedItems(nodes, false)
 	if err != nil {
 		return nil, fmt.Errorf("could not generate trie: %v", err)
 	}
